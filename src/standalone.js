@@ -1,7 +1,11 @@
 import { SettingsApplication } from './ui/SettingsApplication.js';
 import { createStandaloneAdapter } from './adapters/standalone/createStandaloneAdapter.js';
+import { injectSpeedInsights } from '@vercel/speed-insights';
 
 const root = document.querySelector('[data-acemusic-app-root]') ?? document.querySelector('#acemusic-app');
+
+// Initialize Vercel Speed Insights
+injectSpeedInsights();
 
 function showStartupError() {
   if (!root) return;
