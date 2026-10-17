@@ -1,0 +1,215 @@
+/* AceMusic application UI. Every selector stays inside the application root. */
+.acemusic-app {
+  --am-primary: #17181d;
+  --am-secondary: #414653;
+  --am-accent: #6757de;
+  --am-page-background: #f5f6f8;
+  --am-card-background: #fff;
+  --am-surface-background: #fbfbfc;
+  --am-text-primary: #191b22;
+  --am-text-secondary: #68707f;
+  --am-border: #e1e4ea;
+  --am-button-background: #1b1c22;
+  --am-button-text: #fff;
+  --am-link: #574bcb;
+  --am-focus: #6658e8;
+  box-sizing: border-box;
+  min-height: 100vh;
+  background: var(--am-page-background);
+  color: var(--am-text-primary);
+  font: 14px/1.5 Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color-scheme: light;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+.acemusic-app *, .acemusic-app *::before, .acemusic-app *::after { box-sizing: border-box; }
+.acemusic-app [hidden] { display: none !important; }
+.acemusic-app .acemusic-loading, .acemusic-app .acemusic-startup-error { max-width: 720px; margin: 0 auto; padding: 48px 22px; color: var(--am-text-secondary); font-size: 13px; }
+.acemusic-app .acemusic-startup-error { color: #a53d3d; }
+.acemusic-app button, .acemusic-app input { font: inherit; }
+.acemusic-app button { color: inherit; }
+.acemusic-app a { color: var(--am-link); }
+.acemusic-app :focus-visible { outline: 3px solid var(--am-focus); outline-offset: 3px; }
+.acemusic-app h1, .acemusic-app h2, .acemusic-app h3, .acemusic-app p { margin-top: 0; }
+
+.acemusic-app .app-shell { display: grid; grid-template-columns: 244px minmax(0, 1fr); min-height: 100vh; }
+.acemusic-app .sidebar { display: flex; flex-direction: column; min-height: 100vh; padding: 28px 18px 20px; background: var(--am-primary); color: #f9f9fb; }
+.acemusic-app .brand-lockup { display: flex; align-items: center; gap: 11px; min-height: 42px; padding: 0 9px; color: #fff; text-decoration: none; }
+.acemusic-app .brand-logo-wrap { position: relative; display: grid; width: 37px; height: 37px; flex: 0 0 37px; place-items: center; overflow: hidden; border-radius: 11px; background: #fff; }
+.acemusic-app .brand-logo-wrap img { display: block; width: 100%; height: 100%; padding: 5px; object-fit: contain; }
+.acemusic-app .brand-logo-fallback { position: absolute; inset: 0; display: grid; place-items: center; color: var(--am-primary); font-size: 11px; font-weight: 850; letter-spacing: -.08em; }
+.acemusic-app .brand-name { display: block; font-size: 15px; font-weight: 720; letter-spacing: -.045em; }
+.acemusic-app .brand-caption { display: block; margin-top: 1px; color: rgba(255,255,255,.58); font-size: 10px; font-weight: 560; letter-spacing: .115em; text-transform: uppercase; }
+.acemusic-app .sidebar-label { margin: 39px 11px 11px; color: rgba(255,255,255,.44); font-size: 10px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+.acemusic-app .sidebar-nav { display: grid; gap: 5px; }
+.acemusic-app .sidebar-nav a { display: flex; align-items: center; gap: 12px; min-height: 43px; padding: 0 12px; border: 1px solid transparent; border-radius: 9px; color: rgba(255,255,255,.68); font-size: 12px; font-weight: 590; text-decoration: none; transition: color 150ms ease, background 150ms ease; }
+.acemusic-app .sidebar-nav a:hover { background: rgba(255,255,255,.07); color: #fff; }
+.acemusic-app .sidebar-nav a[aria-current="location"] { border-color: rgba(255,255,255,.1); background: rgba(255,255,255,.1); color: #fff; }
+.acemusic-app .sidebar-nav svg { width: 17px; height: 17px; flex: 0 0 17px; }
+.acemusic-app .sidebar-bottom { margin-top: auto; padding: 16px 11px 0; }
+.acemusic-app .deployment-note { padding: 14px 13px; border: 1px solid rgba(255,255,255,.11); border-radius: 11px; background: rgba(255,255,255,.045); }
+.acemusic-app .deployment-note strong { display: block; color: rgba(255,255,255,.9); font-size: 11px; font-weight: 650; }
+.acemusic-app .deployment-note p { margin: 5px 0 0; color: rgba(255,255,255,.53); font-size: 10px; line-height: 1.55; }
+
+.acemusic-app .main-area { min-width: 0; padding: 0 42px 52px; }
+.acemusic-app .topbar { display: flex; align-items: center; justify-content: space-between; min-height: 72px; border-bottom: 1px solid var(--am-border); }
+.acemusic-app .breadcrumb { color: var(--am-text-secondary); font-size: 11px; font-weight: 620; letter-spacing: .08em; text-transform: uppercase; }
+.acemusic-app .topbar-actions { display: flex; align-items: center; gap: 19px; }
+.acemusic-app .topbar-actions a { color: var(--am-text-secondary); font-size: 11px; font-weight: 600; text-decoration: none; }
+.acemusic-app .topbar-actions a:hover { color: var(--am-link); }
+.acemusic-app .topbar-actions a svg { width: 12px; height: 12px; vertical-align: -2px; }
+.acemusic-app .core-chip { display: inline-flex; align-items: center; gap: 7px; padding: 6px 9px; border: 1px solid var(--am-border); border-radius: 999px; background: var(--am-surface-background); color: var(--am-text-secondary); font-size: 10px; font-weight: 650; white-space: nowrap; }
+.acemusic-app .core-chip svg { width: 13px; height: 13px; color: var(--am-accent); }
+.acemusic-app .core-chip-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--am-accent); }
+.acemusic-app .page-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin: 33px 0 28px; }
+.acemusic-app .eyebrow { margin: 0 0 6px; color: var(--am-accent); font-size: 10px; font-weight: 750; letter-spacing: .13em; text-transform: uppercase; }
+.acemusic-app h1 { margin: 0 0 7px; color: var(--am-text-primary); font-size: clamp(27px, 3vw, 35px); font-weight: 690; letter-spacing: -.055em; line-height: 1.1; }
+.acemusic-app .page-subtitle { max-width: 660px; margin: 0; color: var(--am-text-secondary); font-size: 13px; line-height: 1.65; }
+.acemusic-app .connection-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 11px; border: 1px solid var(--am-border); border-radius: 999px; background: var(--am-surface-background); color: var(--am-text-secondary); font-size: 11px; font-weight: 630; white-space: nowrap; }
+.acemusic-app .connection-badge::before { width: 7px; height: 7px; border-radius: 50%; background: #9aa0ab; content: ""; }
+.acemusic-app .connection-badge[data-state="success"] { border-color: #b7dfcd; color: #176c49; }
+.acemusic-app .connection-badge[data-state="success"]::before { background: #2c9b6a; }
+.acemusic-app .connection-badge[data-state="error"] { border-color: #e7c4c4; color: #a53d3d; }
+.acemusic-app .connection-badge[data-state="error"]::before { background: #c84c4c; }
+.acemusic-app .connection-badge[data-state="checking"]::before { background: var(--am-accent); animation: acemusic-core-pulse 1s ease-in-out infinite alternate; }
+@keyframes acemusic-core-pulse { to { opacity: .35; } }
+.acemusic-app .content-column { display: grid; max-width: 1120px; gap: 19px; }
+.acemusic-app .settings-card { min-width: 0; padding: 25px 27px; border: 1px solid var(--am-border); border-radius: 14px; background: var(--am-card-background); box-shadow: 0 3px 16px rgba(18,22,34,.035); scroll-margin-top: 22px; }
+.acemusic-app .card-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 22px; }
+.acemusic-app .card-heading-main { display: flex; align-items: flex-start; gap: 12px; }
+.acemusic-app .heading-icon { display: grid; width: 36px; height: 36px; flex: 0 0 36px; place-items: center; border-radius: 10px; background: color-mix(in srgb, var(--am-accent) 11%, var(--am-card-background)); color: var(--am-accent); }
+.acemusic-app .heading-icon svg { width: 17px; height: 17px; }
+.acemusic-app .card-heading h2 { margin: 1px 0 4px; color: var(--am-text-primary); font-size: 16px; font-weight: 690; letter-spacing: -.025em; }
+.acemusic-app .card-heading p { max-width: 720px; margin: 0; color: var(--am-text-secondary); font-size: 11px; line-height: 1.65; }
+
+.acemusic-app .form-field { display: grid; gap: 7px; min-width: 0; }
+.acemusic-app .form-field label, .acemusic-app .field-label { color: var(--am-text-primary); font-size: 11px; font-weight: 670; }
+.acemusic-app .form-field label .field-help { display: inline; font-weight: 450; }
+.acemusic-app .field-help { margin: 0; color: var(--am-text-secondary); font-size: 10px; line-height: 1.55; }
+.acemusic-app .field-help code { padding: 1px 4px; border-radius: 4px; background: var(--am-page-background); color: var(--am-text-primary); font: 10px/1.4 "SFMono-Regular", Consolas, monospace; }
+.acemusic-app .field-error { min-height: 0; margin: 0; color: #a53d3d; font-size: 10px; line-height: 1.45; }
+.acemusic-app .field-error:empty { display: none; }
+.acemusic-app .text-input { width: 100%; min-width: 0; height: 42px; padding: 0 12px; border: 1px solid var(--am-border); border-radius: 8px; background: var(--am-surface-background); color: var(--am-text-primary); font-size: 12px; transition: border-color 140ms ease, box-shadow 140ms ease; }
+.acemusic-app .text-input::placeholder { color: #9aa0ab; }
+.acemusic-app .text-input:hover { border-color: #b7bdc8; }
+.acemusic-app .text-input:focus { border-color: var(--am-focus); outline: none; box-shadow: 0 0 0 3px rgba(102,88,232,.14); }
+.acemusic-app .text-input[aria-invalid="true"] { border-color: #bb4b4b; }
+.acemusic-app .field-grid { display: grid; grid-template-columns: minmax(0,1fr); gap: 18px; }
+.acemusic-app .password-control { position: relative; }
+.acemusic-app .password-control .text-input { padding-right: 48px; }
+.acemusic-app .reveal-button { position: absolute; top: 50%; right: 7px; display: grid; width: 32px; height: 32px; transform: translateY(-50%); place-items: center; border: 0; border-radius: 7px; background: transparent; color: var(--am-text-secondary); cursor: pointer; }
+.acemusic-app .reveal-button:hover { background: #f0f1f4; color: var(--am-text-primary); }
+.acemusic-app .reveal-button svg { width: 16px; height: 16px; }
+.acemusic-app .security-note { display: flex; align-items: flex-start; gap: 9px; margin: 17px 0 0; padding: 11px 12px; border: 1px solid color-mix(in srgb, var(--am-accent) 18%, var(--am-border)); border-radius: 9px; background: color-mix(in srgb, var(--am-accent) 4%, var(--am-card-background)); color: var(--am-text-secondary); font-size: 10px; line-height: 1.55; }
+.acemusic-app .security-note svg { width: 15px; height: 15px; flex: 0 0 15px; margin-top: 1px; color: var(--am-accent); }
+.acemusic-app .security-note strong { color: var(--am-text-primary); font-weight: 680; }
+.acemusic-app .button-row { display: flex; align-items: center; flex-wrap: wrap; gap: 9px; margin-top: 18px; }
+.acemusic-app .button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 38px; padding: 0 14px; border: 1px solid transparent; border-radius: 8px; font-size: 11px; font-weight: 670; text-decoration: none; cursor: pointer; transition: filter 140ms ease, transform 140ms ease, background 140ms ease; }
+.acemusic-app .button:hover:not(:disabled) { filter: brightness(1.07); }
+.acemusic-app .button:active:not(:disabled) { transform: translateY(1px); }
+.acemusic-app .button:disabled { cursor: progress; opacity: .68; }
+.acemusic-app .button-primary { border-color: var(--am-button-background); background: var(--am-button-background); color: var(--am-button-text); }
+.acemusic-app .button-secondary { border-color: var(--am-border); background: var(--am-surface-background); color: var(--am-text-primary); }
+.acemusic-app .button-quiet { border-color: transparent; background: transparent; color: var(--am-text-secondary); }
+.acemusic-app .button-quiet:hover:not(:disabled) { background: #f0f1f4; color: var(--am-text-primary); }
+.acemusic-app .button-danger { color: #a53d3d; }
+.acemusic-app .button svg { width: 14px; height: 14px; }
+.acemusic-app .button-spacer { flex: 1 1 auto; }
+.acemusic-app .form-status { min-height: 17px; margin: 10px 0 0; color: var(--am-text-secondary); font-size: 10px; }
+.acemusic-app .form-status[data-tone="success"] { color: #176c49; }
+.acemusic-app .form-status[data-tone="error"] { color: #a53d3d; }
+.acemusic-app .form-status[data-tone="warning"] { color: #8a620b; }
+.acemusic-app .api-test-result { display: flex; align-items: flex-start; gap: 10px; margin-top: 15px; padding: 12px 13px; border: 1px solid var(--am-border); border-radius: 9px; background: var(--am-surface-background); }
+.acemusic-app .api-test-result[data-state="success"] { border-color: #b7dfcd; background: #f4fbf7; }
+.acemusic-app .api-test-result[data-state="error"] { border-color: #e7c4c4; background: #fff8f8; }
+.acemusic-app .result-indicator { width: 8px; height: 8px; flex: 0 0 8px; margin-top: 4px; border-radius: 50%; background: #9aa0ab; }
+.acemusic-app .api-test-result[data-state="success"] .result-indicator { background: #2c9b6a; }
+.acemusic-app .api-test-result[data-state="error"] .result-indicator { background: #c84c4c; }
+.acemusic-app .result-copy { min-width: 0; color: var(--am-text-secondary); font-size: 10px; line-height: 1.5; overflow-wrap: anywhere; }
+.acemusic-app .result-copy strong { display: block; margin-bottom: 2px; color: var(--am-text-primary); font-size: 11px; font-weight: 670; }
+.acemusic-app .section-divider { height: 1px; margin: 23px 0; border: 0; background: var(--am-border); }
+
+.acemusic-app .branding-grid { display: grid; grid-template-columns: minmax(0,1.42fr) minmax(260px,.86fr); align-items: start; gap: 27px; }
+.acemusic-app .logo-settings { display: grid; grid-template-columns: 136px minmax(0,1fr); gap: 18px; align-items: center; }
+.acemusic-app .logo-preview-box { display: grid; min-height: 96px; place-items: center; overflow: hidden; border: 1px dashed var(--am-border); border-radius: 11px; background: var(--am-surface-background); }
+.acemusic-app .logo-preview-box img { display: block; width: 100%; max-width: 130px; max-height: 68px; padding: 10px; object-fit: contain; }
+.acemusic-app .logo-preview-box .logo-fallback { color: var(--am-text-primary); font-size: 16px; font-weight: 770; letter-spacing: -.05em; }
+.acemusic-app .logo-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.acemusic-app .logo-note { margin: 9px 0 0; color: var(--am-text-secondary); font-size: 10px; line-height: 1.55; }
+.acemusic-app .visually-hidden { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0,0,0,0) !important; white-space: nowrap !important; border: 0 !important; }
+.acemusic-app .theme-groups { display: grid; gap: 18px; }
+.acemusic-app .theme-group h3 { margin: 0 0 10px; color: var(--am-text-secondary); font-size: 10px; font-weight: 710; letter-spacing: .08em; text-transform: uppercase; }
+.acemusic-app .color-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 10px 12px; }
+.acemusic-app .color-field { display: grid; min-width: 0; gap: 6px; }
+.acemusic-app .color-field label { overflow: hidden; color: var(--am-text-primary); font-size: 10px; font-weight: 650; text-overflow: ellipsis; white-space: nowrap; }
+.acemusic-app .color-control { display: grid; grid-template-columns: 32px minmax(0,1fr); gap: 6px; align-items: center; min-width: 0; }
+.acemusic-app .color-picker { width: 32px; height: 32px; padding: 3px; border: 1px solid var(--am-border); border-radius: 7px; background: var(--am-surface-background); cursor: pointer; }
+.acemusic-app .color-picker::-webkit-color-swatch-wrapper { padding: 0; }
+.acemusic-app .color-picker::-webkit-color-swatch, .acemusic-app .color-picker::-moz-color-swatch { border: 0; border-radius: 4px; }
+.acemusic-app .hex-input { height: 32px; padding: 0 7px; font: 10px "SFMono-Regular", Consolas, "Liberation Mono", monospace; letter-spacing: .01em; }
+
+.acemusic-app .preview-panel { position: sticky; top: 20px; overflow: hidden; border: 1px solid var(--am-border); border-radius: 12px; background: var(--am-card-background); box-shadow: 0 3px 13px rgba(18,22,34,.04); }
+.acemusic-app .preview-header { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 48px; padding: 0 14px; border-bottom: 1px solid var(--am-border); }
+.acemusic-app .preview-header strong { color: var(--am-text-primary); font-size: 10px; font-weight: 680; }
+.acemusic-app .preview-live-tag { color: var(--am-accent); font-size: 9px; font-weight: 720; letter-spacing: .09em; text-transform: uppercase; }
+.acemusic-app .preview-stage { padding: 16px; background: var(--am-page-background); }
+.acemusic-app .preview-brand-row { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; }
+.acemusic-app .preview-brand-row .brand-logo-wrap { width: 25px; height: 25px; flex-basis: 25px; border-radius: 7px; }
+.acemusic-app .preview-brand-row .brand-logo-wrap img { padding: 3px; }
+.acemusic-app .preview-brand-row .brand-logo-fallback { font-size: 8px; }
+.acemusic-app .preview-brand-name { color: var(--am-text-primary); font-size: 10px; font-weight: 700; }
+.acemusic-app .preview-card { padding: 16px; border: 1px solid var(--am-border); border-radius: 10px; background: var(--am-card-background); }
+.acemusic-app .preview-kicker { margin: 0 0 7px; color: var(--am-accent); font-size: 8px; font-weight: 770; letter-spacing: .12em; text-transform: uppercase; }
+.acemusic-app .preview-card h3 { margin: 0 0 7px; color: var(--am-text-primary); font-size: 17px; font-weight: 680; letter-spacing: -.045em; line-height: 1.18; }
+.acemusic-app .preview-card p { margin: 0 0 14px; color: var(--am-text-secondary); font-size: 9px; line-height: 1.55; }
+.acemusic-app .preview-button { display: inline-flex; align-items: center; min-height: 29px; padding: 0 10px; border-radius: 7px; background: var(--am-button-background); color: var(--am-button-text); font-size: 9px; font-weight: 660; }
+.acemusic-app .preview-link { display: inline-block; margin-left: 10px; color: var(--am-link); font-size: 9px; font-weight: 650; text-decoration: underline; text-underline-offset: 2px; }
+.acemusic-app .preview-swatch-row { display: flex; gap: 6px; margin-top: 14px; }
+.acemusic-app .preview-swatch { width: 19px; height: 19px; border: 1px solid var(--am-border); border-radius: 6px; }
+.acemusic-app .preview-swatch-primary { background: var(--am-primary); }
+.acemusic-app .preview-swatch-secondary { background: var(--am-secondary); }
+.acemusic-app .preview-swatch-accent { background: var(--am-accent); }
+.acemusic-app .preview-swatch-surface { background: var(--am-surface-background); }
+.acemusic-app .preview-caption { margin: 10px 0 0; color: var(--am-text-secondary); font-size: 9px; line-height: 1.5; }
+.acemusic-app .toast-region { position: fixed; right: 22px; bottom: 22px; z-index: 20; display: grid; gap: 8px; width: min(360px,calc(100vw - 32px)); }
+.acemusic-app .toast { padding: 12px 14px; border: 1px solid var(--am-border); border-radius: 9px; background: var(--am-surface-background); box-shadow: 0 10px 30px rgba(15,18,28,.12); color: var(--am-text-primary); font-size: 11px; line-height: 1.5; }
+.acemusic-app .toast[data-tone="error"] { border-color: #e7c4c4; }
+.acemusic-app .toast[data-tone="success"] { border-color: #b7dfcd; }
+
+@media (max-width: 1080px) {
+  .acemusic-app .main-area { padding-right: 28px; padding-left: 28px; }
+  .acemusic-app .branding-grid { grid-template-columns: minmax(0,1fr) minmax(230px,.8fr); gap: 20px; }
+  .acemusic-app .color-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (max-width: 780px) {
+  .acemusic-app .app-shell { grid-template-columns: 1fr; }
+  .acemusic-app .sidebar { min-height: 0; padding: 12px 17px; }
+  .acemusic-app .brand-lockup { padding: 0; }
+  .acemusic-app .brand-logo-wrap { width: 33px; height: 33px; flex-basis: 33px; }
+  .acemusic-app .sidebar-label, .acemusic-app .sidebar-bottom { display: none; }
+  .acemusic-app .sidebar-nav { display: flex; gap: 5px; margin-top: 12px; overflow-x: auto; }
+  .acemusic-app .sidebar-nav a { min-height: 36px; flex: 0 0 auto; padding: 0 10px; font-size: 10px; }
+  .acemusic-app .sidebar-nav svg { width: 15px; height: 15px; }
+  .acemusic-app .main-area { padding-right: 18px; padding-left: 18px; }
+  .acemusic-app .topbar { min-height: 56px; }
+  .acemusic-app .page-heading { align-items: flex-start; flex-direction: column; gap: 13px; margin-top: 25px; }
+  .acemusic-app .branding-grid { grid-template-columns: 1fr; }
+  .acemusic-app .preview-panel { position: static; }
+}
+@media (max-width: 520px) {
+  .acemusic-app .main-area { padding-right: 12px; padding-left: 12px; }
+  .acemusic-app .settings-card { padding: 19px 16px; border-radius: 12px; }
+  .acemusic-app .topbar-actions { gap: 10px; }
+  .acemusic-app .topbar-actions a { display: none; }
+  .acemusic-app .card-heading { gap: 8px; }
+  .acemusic-app .logo-settings { grid-template-columns: 94px minmax(0,1fr); gap: 12px; }
+  .acemusic-app .logo-preview-box { min-height: 78px; }
+  .acemusic-app .logo-preview-box img { max-height: 60px; }
+  .acemusic-app .color-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .acemusic-app .button-row { gap: 6px; }
+  .acemusic-app .button { padding: 0 10px; font-size: 10px; }
+  .acemusic-app .button-spacer { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .acemusic-app *, .acemusic-app *::before, .acemusic-app *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}

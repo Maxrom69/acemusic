@@ -1,0 +1,49 @@
+/* Additional component-specific rule for the live application mark. */
+.acemusic-app .brand-logo-wrap[data-logo-frame] {
+  position: relative;
+}
+
+.acemusic-app .brand-logo-wrap[data-logo-frame] .js-logo-fallback {
+  position: absolute;
+  inset: 0;
+}
+
+.acemusic-app .preview-brand-row .brand-logo-wrap {
+  width: 25px;
+  height: 25px;
+  flex: 0 0 25px;
+  border-radius: 7px;
+}
+
+.acemusic-app .preview-brand-row .brand-logo-wrap img {
+  width: 100%;
+  height: 100%;
+  padding: 3px;
+}
+
+.acemusic-app .preview-brand-row .brand-logo-fallback {
+  font-size: 8px;
+}
+
+.acemusic-app .preview-brand-row .brand-logo-wrap[data-logo-frame] {
+  display: grid;
+}
+
+.acemusic-app .topbar-actions a svg {
+  width: 12px;
+  height: 12px;
+  vertical-align: -2px;
+}
+
+.acemusic-app .button-spinner {
+  width: 12px;
+  height: 12px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: acemusic-core-spin 700ms linear infinite;
+}
+
+@keyframes acemusic-core-spin {
+  to { transform: rotate(360deg); }
+}

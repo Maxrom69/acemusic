@@ -1,0 +1,84 @@
+{
+  "name": "acemusic-ai",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "main": "electron/main.js",
+  "description": "AceMusic AI shared music studio for web, WordPress, and Electron.",
+  "engines": {
+    "node": ">=22.12.0",
+    "npm": ">=10"
+  },
+  "scripts": {
+    "deps:install": "npm ci && node scripts/verify-electron-runtime.mjs",
+    "dev": "node scripts/dev-server.mjs",
+    "build": "node scripts/build.mjs",
+    "build:wordpress": "node scripts/build-wordpress.mjs",
+    "build:all": "npm run build && npm run build:wordpress",
+    "preview": "npm run build && node scripts/preview-server.mjs",
+    "electron:build:web": "npm run build && node scripts/build-electron-web.mjs",
+    "electron:dev": "npm run electron:build:web && node scripts/electron-dev.mjs",
+    "electron:launch": "npm run electron:build:web && electron .",
+    "electron:build": "npm run electron:build:web && electron-builder --dir --x64",
+    "electron:dir": "npm run electron:build",
+    "electron:win:installer": "npm run electron:build:web && electron-builder --win nsis --x64",
+    "electron:win:portable": "npm run electron:build:web && electron-builder --win portable --x64",
+    "clean": "node scripts/clean.mjs",
+    "test": "node --test",
+    "check": "node scripts/check.mjs"
+  },
+  "devDependencies": {
+    "electron": "44.9.0",
+    "electron-builder": "26.15.3"
+  },
+  "build": {
+    "appId": "ai.acemusic.settings",
+    "productName": "AceMusic AI",
+    "directories": {
+      "buildResources": "build",
+      "output": "dist/electron"
+    },
+    "files": [
+      "electron/**/*",
+      "src/core/**/*",
+      "dist/electron-web/**/*",
+      "package.json"
+    ],
+    "asar": true,
+    "npmRebuild": false,
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "artifactName": "${productName}-Setup-${version}-${arch}.${ext}",
+      "oneClick": false,
+      "perMachine": false,
+      "allowElevation": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "AceMusic AI",
+      "installerIcon": "build/icon.ico",
+      "uninstallerIcon": "build/icon.ico",
+      "installerHeaderIcon": "build/icon.ico",
+      "deleteAppDataOnUninstall": false
+    },
+    "portable": {
+      "artifactName": "${productName}-Portable-${version}-${arch}.${ext}"
+    }
+  }
+}
