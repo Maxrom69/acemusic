@@ -1,7 +1,11 @@
 import { SettingsApplication } from './ui/SettingsApplication.js';
 import { createElectronAdapter } from './adapters/electron/createElectronAdapter.js';
+import { injectSpeedInsights } from '@vercel/speed-insights';
 
 const root = document.querySelector('#acemusic-app');
+
+// Initialize Vercel Speed Insights (primarily for web deployments)
+injectSpeedInsights();
 
 function showStartupError() {
   if (!root) return;
