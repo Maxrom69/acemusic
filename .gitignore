@@ -1,0 +1,25 @@
+# Local credentials and environment configuration
+.env
+.env.*
+!.env.example
+
+# Runtime-only user data and secrets
+/data/
+*.secrets.json
+*.secrets.json.*
+
+# Build / tooling output
+/dist/
+/build/*
+!/build/icon.svg
+!/build/icon.png
+!/build/icon.ico
+/node_modules/
+/.venv/
+/.cache/
+/coverage/
+
+# Logs and operating-system files
+*.log
+.DS_Store
+Thumbs.db
